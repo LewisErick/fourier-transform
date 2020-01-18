@@ -184,8 +184,9 @@ function plotLine(newXValues, newYValues) {
     myLine
         .attr("class", "line")
         .datum(ourValues)
+        .attr("stroke", function (d) {console.log("what is this"); console.log(d); return "red";})
+        .transition().duration(1000)
         .attr("d", line)  // by changing this to myData one can get the unsorted data plotted instead, this is the attribut theat connects the paths to a certain object/array
-        .attr("stroke", function (d) {console.log("what is this"); console.log(d); return "red";});
 
     //appends the axis to what doesn't exist yet
     var xAxis = d3.axisBottom()
