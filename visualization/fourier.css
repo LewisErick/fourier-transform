@@ -16,7 +16,12 @@ circle {
       font: 10px sans-serif;
       text-anchor: end;
     }
-    
+
+.tooltip {
+  position: absolute;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
 .axis path{
   fill:none;
   stroke:black;

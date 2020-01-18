@@ -13,6 +13,12 @@ var x = d3.scaleLinear()
 var y = d3.scaleLinear()
         .range([height, 0]);
 
+var tooltipX = d3.select("#tooltip_x");
+var tooltipY = d3.select("#tooltip_y");
+var tooltip = d3.select("#tooltip");
+tooltip.style("opacity", "0");
+tooltip.style("position", "absolute");
+
 // the svg element
 var mySVG = d3.select("#graphContainer12")
         .append("svg")
@@ -53,6 +59,7 @@ function point(){
     var pathLength = pathEl.getTotalLength();
 
     var _x = d3.mouse(this)[0];
+    var _y = d3.mouse(this)[1];
     var beginning = _x , end = pathLength, target;
     while (true) {
         target = Math.floor((beginning + end) / 2);
@@ -69,10 +76,15 @@ function point(){
             break; //position found
         }
     }
+    tooltip.style("top", pos.y - 16);
+    tooltip.style("left", pos.x + 16);
+    idx = Math.round((pos.x / width) * xValues.length);
+    tooltipX.html(xValues[idx]);
+    tooltipY.html(yValues[idx]);
     circle
-    .attr("opacity", 1)
-    .attr("cx", _x)
-    .attr("cy", pos.y);
+        .attr("opacity", 1)
+        .attr("cx", _x)
+        .attr("cy", pos.y);
 }
 
 var currentFunction = "fft";
@@ -105,13 +117,15 @@ function click() {
 
 function over(){
     circle.transition().duration(200).style("opacity", "1");
+    tooltip.style("opacity", "1");
 }
 function leave(){
     circle.transition().duration(200).style("opacity", "0");
+    tooltip.style("opacity", "0");
 }
 
 var plotstart = 0, 
-    stepsize = 0.1, // in use in this script
+    stepsize = 0.0001, // in use in this script
     plotrange_real = 5,
     plotrange = plotrange_real + stepsize; // adjusted for the "range" method using stepsize as a 3rd parameter
 
