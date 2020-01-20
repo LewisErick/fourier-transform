@@ -13,7 +13,7 @@ Go to https://lewiserick.github.io/fourier-transform/ for the interactive visual
 - Hover over the graph to display the coordinates of the data point being hovered.
 
 ### References
-http://www.thefouriertransform.com
-https://en.wikipedia.org/wiki/Fourier_transform
-https://en.wikipedia.org/wiki/Fast_Fourier_transform#Definition
-Note: Code references included in Jupyter notebooks and web visualization files.
+- http://www.thefouriertransform.com
+- https://en.wikipedia.org/wiki/Fourier_transform
+- https://en.wikipedia.org/wiki/Fast_Fourier_transform#Definition
+- Note: Code references included in Jupyter notebooks and web visualization files.
