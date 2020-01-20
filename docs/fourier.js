@@ -139,6 +139,8 @@ function click() {
         currentFunction = "integrand";
     } else if (currentFunction == "integrand") {
         currentFunction = "original";
+    } else {
+        currentFunction = "fft";
     }
     updateYValues(freq);
     plotLine(xValues, yValues);
