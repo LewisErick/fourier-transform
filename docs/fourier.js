@@ -3,7 +3,7 @@ var h = 500;
 
 
 // variables and setting up the svg element
-var margin = {top: 20, right: 20, bottom: 100, left: 60},
+var margin = {top: 20, right: 20, bottom: 100, left: 100},
     width = w - margin.left - margin.right,
     height = h - margin.top - margin.bottom;
 
@@ -281,15 +281,20 @@ function plotLine(newXValues, newYValues) {
 
     // y goes from a negative to a positive value
     y.domain([d3.min(ourValues, function(d) 
-    { 
+    {
+        if (currentFunction ==  "integrand") {
+            return (d.y).toExponential()
+        }
         return d.y; 
         
     }), 
 
     d3.max(ourValues, function(d) 
     { 
-        return d.y; 
-        
+        if (currentFunction ==  "integrand") {
+            return (d.y).toExponential()
+        }
+        return d.y;
     })]);
 
     //The axis and some labels - apparenly there comes some default values from 0.0-1.0 when the axis are added without binding them to some values
